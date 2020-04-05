@@ -3,6 +3,12 @@ if exists('g:loaded_tomek_mappings')
 endif
 let g:loaded_tomek_mappings = 1
 
+" <----------------------------------------------------------------------------- CUSTOM FOLDING --->
+nnoremap <buffer>      f            za
+nnoremap <silent> <buffer> F        :call folding_controls#ToggleFold()<CR>
+setlocal foldtext=folding_controls#CustomFoldText()
+set fillchars=fold:\ 
+
 " <---------------------------------------------------------------------------------- GITBACKUP --->
 " vim-gitbackup plugin: backup directory for all files
 let g:custom_backup_dir='~/.vim_gitbackup'

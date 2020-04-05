@@ -32,9 +32,9 @@ function! BackupCurrentFile()
     let cmd .= 'cd ' . g:custom_backup_dir . ';'
     let cmd .= 'git add ' . backup_file . ';'
     let cmd .= 'git commit -m "Backup - `date`";'
-    echom cmd
+    " echom cmd
     " call jobstart(cmd)
     " call job_start(cmd)
-    exec '!' . cmd
+    silent exec '!' . cmd
     " echom backup_file . ' backed up...'
 endfunction
