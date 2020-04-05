@@ -3,6 +3,14 @@ if exists('g:loaded_tomek_mappings')
 endif
 let g:loaded_tomek_mappings = 1
 
+" <------------------------------------------------------------------------------------ TAGLIST --->
+let Tlist_Ctags_Cmd='/usr/bin/ctags'
+let Tlist_Use_Right_Window = 1
+nnoremap <silent>     <F8>          :TlistToggle<CR>
+
+" <----------------------------------------------------------------------------------- FOLDLIST --->
+nnoremap <silent>     <F9>          :Flist<CR>
+
 " <----------------------------------------------------------------------------- CUSTOM FOLDING --->
 nnoremap <buffer>      f            za
 nnoremap <silent> <buffer> F        :call folding_controls#ToggleFold()<CR>
