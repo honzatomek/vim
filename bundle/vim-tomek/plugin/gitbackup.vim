@@ -1,9 +1,17 @@
 " https://www.reddit.com/r/vim/comments/8w3udw/topnotch_vim_file_backup_history_with_no_plugins/
+if exists('g:loaded_gitbackup')
+    finish
+endif
+let g:loaded_gitbackup = 1
+
 augroup custom_backup
     autocmd!
     autocmd BufWritePost * call BackupCurrentFile()
 augroup end
 
+if !exists('g:custom_backup_dir')
+    let g:custom_backup_dir='~/.vim_gitbackup'
+endif
 " let s:custom_backup_dir='~/.vim_custom_backups'
 function! BackupCurrentFile()
     if !isdirectory(expand(g:custom_backup_dir))

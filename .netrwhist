@@ -1,5 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/home/pi/.vim/bundle/vim-gitbackup/plugin'
-let g:netrw_dirhist_2='/home/pi/.vim/bundle/vim-gitbackup'
-let g:netrw_dirhist_3='/home/pi/.vim/bundle/vim-gitbackup/autoload'
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/home/pi/.vim/bundle/vim-tomek'
+let g:netrw_dirhist_2='/home/pi/.vim/bundle'
+let g:netrw_dirhist_3='/home/pi/.vim'
+let g:netrw_dirhist_4='/home/pi'
+let g:netrw_dirhist_5='/home/pi/.vim/bundle/vim-tomek/plugin'
+let g:netrw_dirhist_6='/home/pi/.vim/bundle/vim-tomek'
+let g:netrw_dirhist_7='/home/pi/.vim/bundle/vim-tomek/autoload'
