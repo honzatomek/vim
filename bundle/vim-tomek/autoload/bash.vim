@@ -79,6 +79,12 @@ function! bash#ExecuteAndShow(mode) range
     " call appendbufline(s:output_buffer_name, "$", "")
     call append("$", "")
     silent execute "$" . l:interpreter[1:] . ' ' . shellescape(l:tmpbuffname, 1)
+    if !exists('b:AnsiEscOn')
+        let b:AnsiEscOn = 1
+        silent execute ':AnsiEsc'
+    else
+        silent execute ':AnsiEsc!'
+    endif
 
     silent call delete(l:tmpbuffname)
     silent execute l:curbuffwin . 'wincmd w'
