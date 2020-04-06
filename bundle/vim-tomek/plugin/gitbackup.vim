@@ -37,4 +37,5 @@ function! BackupCurrentFile()
     " call job_start(cmd)
     silent exec '!' . cmd
     " echom backup_file . ' backed up...'
+    redraw!
 endfunction
