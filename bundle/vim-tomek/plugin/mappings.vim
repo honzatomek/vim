@@ -41,3 +41,11 @@ nmap     <silent>      !C           :normal Vggj<CR>:call bash#ExecuteAndShow('v
 " Bind F5 to save file if modified and execute python script in a buffer.
 nnoremap <silent> <F5> :call python#SaveAndExecute()<CR>
 vnoremap <silent> <F5> :<C-u>call python#SaveAndExecute()<CR>
+
+" <--------------------------------------------------------------------------------------- JSON --->
+" reformat json file into pretty pring
+" command! Json execute "normal ggVG!jq '.'"
+command! JsonP %!python -m json.tool
+" reformat json file into one line
+command! JsonO %s/^\s*//g | %s/\s*$\n//g
+
