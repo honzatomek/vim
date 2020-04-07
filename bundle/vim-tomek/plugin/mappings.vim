@@ -45,7 +45,7 @@ vnoremap <silent> <F5> :<C-u>call python#SaveAndExecute()<CR>
 " <--------------------------------------------------------------------------------------- JSON --->
 " reformat json file into pretty pring
 " command! Json execute "normal ggVG!jq '.'"
-command! JsonP %!python -m json.tool
+command! JsonPretty %!python -m json.tool
 " reformat json file into one line
-command! JsonO %s/^\s*//g | %s/\s*$\n//g
+command! JsonOneline %s/^\s*//g | %s/\s*$\n//g
 
