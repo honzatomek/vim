@@ -20,6 +20,9 @@ function! BackupCurrentFile()
         let cmd .= 'git init;'
         call system(cmd)
     endif
+    if expand('%:t'') =~ '\.tmp.*'
+        return
+    endif
     let file = expand('%:p')
     if file =~ fnamemodify(g:custom_backup_dir, ':t') | return | endif
     let file_dir = g:custom_backup_dir . expand('%:p:h')
