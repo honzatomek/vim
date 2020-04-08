@@ -20,7 +20,7 @@ function! BackupCurrentFile()
         let cmd .= 'git init;'
         call system(cmd)
     endif
-    if expand('%:t'') =~ '\.tmp.*'
+    if expand('%:t') =~ '\.tmp.*'
         return
     endif
     let file = expand('%:p')
