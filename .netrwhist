@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/home/pi/.vim'
+let g:netrw_dirhist_2='/home/pi/.vim/syntax'
+let g:netrw_dirhist_3='/home/pi/.vim/colors'
+let g:netrw_dirhist_4='/home/pi/.vim'
+let g:netrw_dirhist_5='/home/pi'
+let g:netrw_dirhist_6='/home/pi/prog/uPython/sonoff-basic-ecord'
+let g:netrw_dirhist_7='/home/pi/prog/uPython'
+let g:netrw_dirhist_8='/home/pi/prog/uPython/sonoff-basic-ecord'
+let g:netrw_dirhist_9='/home/pi/Programming/uPYTHON/bin/sonoff/basic/temp'
