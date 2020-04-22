@@ -12,9 +12,13 @@ nnoremap <silent>     <F8>          :TlistToggle<CR>
 nnoremap <silent>     <F9>          :Flist<CR>
 
 " <----------------------------------------------------------------------------- CUSTOM FOLDING --->
-nnoremap <buffer>      f            za
-nnoremap <silent> <buffer> F        :call folding_controls#ToggleFold()<CR>
-setlocal foldtext=folding_controls#CustomFoldText()
+" nnoremap <buffer>      f            za
+" nnoremap <silent> <buffer> F        :call folding_controls#ToggleFold()<CR>
+" setlocal foldtext=folding_controls#CustomFoldText()
+" setlocal fillchars=fold:\ 
+nnoremap               f            za
+nnoremap <silent>      F            :call folding_controls#ToggleFold()<CR>
+set foldtext=folding_controls#CustomFoldText()
 set fillchars=fold:\ 
 
 " <---------------------------------------------------------------------------------- GITBACKUP --->
@@ -26,16 +30,16 @@ let g:custom_backup_dir='~/.vim_gitbackup'
 let g:bash_tmp_dir = $HOME . "/tmp/vim/"
 
 " execute current line in BASH and insert output below
-nmap     <silent>      !I           :exec '.r !'.getline('.')<CR>
+noremap  <silent>      !I           :exec '.r !'.getline('.')<CR>
 " execute current line as a separate BASH script and show the output in a new buffer
 " nnoremap <silent>      !!           :call bash#ExecuteLine()<CR>
-nmap     <silent>      !!           :call bash#ExecuteAndShow('n')<CR>
+noremap  <silent>      !!           :call bash#ExecuteAndShow('n')<CR>
 " execute selected lines as a separate BASH script and show the output in a new buffer
-vmap     <silent>      !!           :call bash#ExecuteAndShow('v')<CR>
+vnoremap <silent>      !!           :call bash#ExecuteAndShow('v')<CR>
 " execute whole file as a separate BASH script and show the output in a new buffer
-nmap     <silent>      !A           :normal ggjVG<CR>:call bash#ExecuteAndShow('v')<CR>
+noremap  <silent>      !A           :normal ggjVG<CR>:call bash#ExecuteAndShow('v')<CR>
 " execute file up to cursor as a separate BASH script and show the output in a new buffer
-nmap     <silent>      !C           :normal Vggj<CR>:call bash#ExecuteAndShow('v')<CR>
+noremap  <silent>      !C           :normal Vggj<CR>:call bash#ExecuteAndShow('v')<CR>
 
 " <------------------------------------------------------------------------------------- PYTHON --->
 " Bind F5 to save file if modified and execute python script in a buffer.
