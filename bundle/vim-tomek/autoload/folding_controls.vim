@@ -14,10 +14,14 @@ function! s:are_folds_closed()
     return 0
 endfunction
 
-if !exists('b:file_folded')
-    let b:file_folded = s:are_folds_closed()
-endif
+" if !exists('b:file_folded')
+    " let b:file_folded = s:are_folds_closed()
+" endif
+" let b:file_folded = 1
 function! folding_controls#ToggleFold()
+    if !exists('b:file_folded')
+        let b:file_folded = s:are_folds_closed()
+    endif
     if b:file_folded == 0
         exec 'normal! zM'
         let b:file_folded = 1
@@ -27,10 +31,14 @@ function! folding_controls#ToggleFold()
     endif
 endfunction
 
-if !exists('b:folded_line_length')
-    let b:folded_line_length = 100
-endif
+" if !exists('b:folded_line_length')
+    " let b:folded_line_length = 100
+" endif
+" let b:folded_line_length = 100
 function! folding_controls#CustomFoldText()
+    if !exists('b:folded_line_length')
+        let b:folded_line_length = 80
+    endif
     let size = 1 + v:foldend - v:foldstart
     if size < 10
         let size = "   " . size
