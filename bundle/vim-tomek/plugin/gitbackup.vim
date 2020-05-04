@@ -34,11 +34,9 @@ function! BackupCurrentFile()
     let cmd .= 'cp ' . file . ' ' . backup_file . ';'
     let cmd .= 'cd ' . g:custom_backup_dir . ';'
     let cmd .= 'git add ' . backup_file . ';'
-    let cmd .= 'git commit -m "Backup - `date`";'
-    " echom cmd
-    " call jobstart(cmd)
-    " call job_start(cmd)
+
+    let cmd .= 'git commit -m "Backup - `date`" -m "`git diff --cached ' . backup_file . '`";'
     silent exec '!' . cmd
-    " echom backup_file . ' backed up...'
+    cd %:h
     redraw!
 endfunction
