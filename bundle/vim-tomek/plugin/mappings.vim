@@ -16,8 +16,8 @@ nnoremap <silent>     <F9>          :Flist<CR>
 " nnoremap <silent> <buffer> F        :call folding_controls#ToggleFold()<CR>
 " setlocal foldtext=folding_controls#CustomFoldText()
 " setlocal fillchars=fold:\ 
-nnoremap               f            za
-nnoremap <silent>      F            :call folding_controls#ToggleFold()<CR>
+nnoremap              <leader>f     za
+nnoremap <silent>     <leader>F     :call folding_controls#ToggleFold()<CR>
 set foldtext=folding_controls#CustomFoldText()
 set fillchars=fold:\ 
 
