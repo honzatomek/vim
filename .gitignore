@@ -1,0 +1,4 @@
+*.git_credentials
+*.ini
+!*_example.ini
+tags*
