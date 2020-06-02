@@ -52,6 +52,15 @@ let g:syntastic_sh_checkers = ['shellcheck']
 let g:syntastic_python_shellcheck_exec = '/usr/bin/shellcheck'
 let g:syntastic_mode_map = {"mode": "passive", "active_filetypes": [], "passive_filetypes": ["python"],}
 
+" <--- vimwiki ----------------------------------------------------------------> {{{1
+let wiki = {}
+let wiki.path = '~/vimwiki'
+let wiki.nested_syntaxes = {'python': 'python',
+                         \  'bash': 'sh', 'sh': 'sh',
+                         \  'vim': 'vim',
+                         \  'git': 'git', 'gitconfig': 'gitconfig',}
+let g:vimwiki_list = [wiki]
+
 " <--- add custom settings ----------------------------------------------------> {{{1
 " set nocompatible                        " turn off compatibility with vi, be iMproved
 " syntax   on                             " turn syntax highlighting on
