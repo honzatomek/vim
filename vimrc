@@ -230,8 +230,8 @@ vnoremap <buffer>      <leader>(    <esc>(<i*<esc>`>a)<esc>`<lv`>
 nnoremap <buffer>      <leader>{    viWo<esc>i{<esc>Ea}<esc>
 vnoremap <buffer>      <leader>{    <esc>{<i*<esc>`>a}<esc>`<lv`>
 " wrap current expression surrounded by blanks in [] parentheses
-nnoremap <buffer>      <leader>{    viWo<esc>i[<esc>Ea]<esc>
-vnoremap <buffer>      <leader>{    <esc>[<i*<esc>`>a]<esc>`<lv`>
+nnoremap <buffer>      <leader>[    viWo<esc>i[<esc>Ea]<esc>
+vnoremap <buffer>      <leader>]    <esc>[<i*<esc>`>a]<esc>`<lv`>
 
 " <--- operator pending mapping -----------------------------------------------> {{{1
 " Inside Next parentheses
