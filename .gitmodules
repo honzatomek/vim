@@ -46,6 +46,7 @@
 	path = bundle/bash-support
 	url = https://github.com/vim-scripts/bash-support.vim
 	branch = master
+	ignore = dirty
 [submodule "bundle/vim-lsdyna"]
 	path = bundle/vim-lsdyna
 	url = https://github.com/gradzikb/vim-lsdyna
