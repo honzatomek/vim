@@ -53,12 +53,19 @@ let g:syntastic_python_shellcheck_exec = '/usr/bin/shellcheck'
 let g:syntastic_mode_map = {"mode": "passive", "active_filetypes": [], "passive_filetypes": ["python"],}
 
 " <--- vimwiki ----------------------------------------------------------------> {{{1
+let g:vimwiki_hl_headers = 1
+let g:vimwiki_hl_cb_checked = 1
+
 let wiki = {}
 let wiki.path = '~/vimwiki'
 let wiki.nested_syntaxes = {'python': 'python',
                          \  'bash': 'sh', 'sh': 'sh',
                          \  'vim': 'vim',
                          \  'git': 'git', 'gitconfig': 'gitconfig',}
+let wiki.links_space_char = '_'
+let wiki.diary_caption_level = 3
+let wiki.auto_diary_index = 1
+let wiki.auto_toc = 1
 let g:vimwiki_list = [wiki]
 
 " <--- add custom settings ----------------------------------------------------> {{{1
@@ -315,7 +322,7 @@ augroup tomek_bash
 augroup END
 
 " <--- functions --------------------------------------------------------------> {{{1
-function s:toggle_comment(comment_chars, is_visual) range
+function! s:toggle_comment(comment_chars, is_visual) range
     if a:is_visual == 0
         let l:lines = [line('.'), line('.')]
     else
