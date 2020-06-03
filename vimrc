@@ -321,6 +321,11 @@ augroup tomek_bash
     autocmd FileType sh vnoremap <script> <buffer> <leader>c :call <SID>toggle_comment('# ', 1)<cr>
 augroup END
 
+augroup tomek_general
+    autocmd!
+    autocmd FileType * if &textwidth != 0 | setlocal colorcolumn=+1 | else | setlocal colorcolumn=81 | endif
+augroup END
+
 " <--- functions --------------------------------------------------------------> {{{1
 function! s:toggle_comment(comment_chars, is_visual) range
     if a:is_visual == 0
