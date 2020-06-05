@@ -55,6 +55,7 @@ let g:syntastic_mode_map = {"mode": "passive", "active_filetypes": [], "passive_
 " <--- vimwiki ----------------------------------------------------------------> {{{1
 let g:vimwiki_hl_headers = 1
 let g:vimwiki_hl_cb_checked = 1
+let g:vimwiki_key_mappings = {'text_objs': 0,}
 
 let wiki = {}
 let wiki.path = '~/vimwiki'
@@ -76,6 +77,8 @@ set hidden
 set wildmenu                            " enhanced completion
 set showcmd                             " show command and visual selection
 set hlsearch                            " highlight search
+
+set cpoptions=+$
 
 set ignorecase                          " ignore case in search patterns
 set smartcase                           " smarter ignore case option
@@ -135,6 +138,8 @@ set timeout                             " key mappings timeout on
 set timeoutlen=500                      " key mappings timeout length in ms
 set ttimeout                            " key codes timeout on
 set ttimeoutlen=100                     " key codes timeout in ms
+
+set shortmess=a
 
 let mapleader=","
 
@@ -280,11 +285,19 @@ nnoremap              <leader>ut   :UndotreeToggle<cr>
 nnoremap              <f7>         :SyntasticCheck<cr>:SyntasticSetLoclist<cr>
 
 " <--- slimux -----------------------------------------------------------------> {{{1
-map                   <leader>tl   :SlimuxREPLSendLine<cr>
-vmap                  <leader>tl   :SlimuxREPLSendSelection<cr>
-map                   <leader>tb   :SlimuxREPLSendBuffer<cr>
-map                   <leader>ts   :SlimuxShellPrompt<cr>
-map                   <leader>tk   :SlimuxSendKeysPrompt<cr>
+nnoremap              <leader>tl   :SlimuxREPLSendLine<cr>
+vnoremap              <leader>tl   :SlimuxREPLSendSelection<cr>
+nnoremap              <leader>tb   :SlimuxREPLSendBuffer<cr>
+nnoremap              <leader>ts   :SlimuxShellPrompt<cr>
+nnoremap              <leader>tk   :SlimuxSendKeysPrompt<cr>
+
+" <--- vimwiki ----------------------------------------------------------------> {{{1
+" open Vimwiki Main Index page in new vertical split
+nnoremap              <leader>ww   :vnew<cr>:VimwikiIndex<cr>
+" open Vimwiki Diary Index page in new vertical split
+nnoremap              <leader>wi   :vnew<cr>:VimwikiDiaryIndex<cr>
+" open Vimwiki Today Note in new vertical split
+nnoremap              <leader>w<leader>w :vnew<cr>:VimwikiMakeDiaryNote<cr>
 
 " <--- augroups ---------------------------------------------------------------> {{{1
 augroup tomek_help
