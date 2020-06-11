@@ -53,12 +53,24 @@ let g:syntastic_python_shellcheck_exec = '/usr/bin/shellcheck'
 let g:syntastic_mode_map = {"mode": "passive", "active_filetypes": [], "passive_filetypes": ["python"],}
 
 " <--- vimwiki ----------------------------------------------------------------> {{{1
+let g:vimwiki_html_header_numbering = 1
+let g:vimwiki_html_header_numbering_sym = '.'
 let g:vimwiki_hl_headers = 1
 let g:vimwiki_hl_cb_checked = 1
 let g:vimwiki_key_mappings = {'text_objs': 0,}
 
 let wiki = {}
 let wiki.path = '~/vimwiki'
+let wiki.path_html = '~/vimwiki/vimwiki_html/'
+let wiki.template_path = '~/vimwiki/templates/'
+let wiki.template_default = 'default'
+let wiki.template_ext = '.tpl'
+let wiki.syntax = 'markdown'
+let wiki.ext = '.md'
+let wiki.template_ext = '.html'
+let wiki.custom_wiki2html = 'vimwiki_markdown'
+let wiki.list_margin = 0
+let wiki.auto_expport = 0
 let wiki.nested_syntaxes = {'python': 'python',
                          \  'bash': 'sh', 'sh': 'sh',
                          \  'vim': 'vim',
@@ -153,9 +165,9 @@ nnoremap               Y            y$
 " use jk and instead of <esc> in insert mode
 inoremap <nowait>      jk           <esc>
 " H to move to the beginnig of line
-nnoremap               H            0
+" nnoremap               H            0
 " L to move to the end of line
-nnoremap               L            $
+" nnoremap               L            $
 
 " Toggle windows
 nnoremap <silent>      <tab>        <c-w><c-w>
@@ -194,6 +206,9 @@ vnoremap <silent>      <c-k>        :m '<-2<cr>gv
 " German keyboard Jump to tag and back
 nnoremap <silent>      ü            <c-]>
 nnoremap <silent>      Ü            <c-o>
+" Mapping for when invoked from mc Jump to tag and back
+nnoremap <silent>      <leader>]    <c-]>
+nnoremap <silent>      <leader>o    <c-o>
 
 " <--- search mapping ---------------------------------------------------------> {{{1
 " Create a search pattern for word under cursor
@@ -368,3 +383,121 @@ function! s:toggle_comment(comment_chars, is_visual) range
     let @@ = l:unnamed_reg
 endfunction
 
+" Extended Diff
+" needs a buffer local variable:
+" b:extended_diff = {"diffopt": "icline,icase,iwhite",
+"                    "comment_char": "!",}
+" or:
+" b:extended_diff = {"diffopt": "icomment",
+"                    "comment_char": "!",}
+" possible options:
+"   icase:          ignore case
+"   icline:         ignore commented lines (works only for line comments)
+"                   ignores only changes in the comments, not if part of file
+"                   was either commented out or uncommented
+"   tabstop:        set tabsize in diff to softtabstop value
+" white space options:
+"   iblank:         ignore added or deleted blank lines
+"   iwhite:         ignore all whitespaces
+"   ispacechange:   ignore changes in space (at line end, tabs, one or more
+"                   spaces = one space) !!! doesn't ignore changes to spaces
+"                   at line start
+"   itab:           ignore difference between tab and tab expansion
+"   itrailspace:    ignore all trailing spaces (at line end)
+"
+"   options hierarchy = iwhite > ispacechange > itab | itrailspace
+"
+augroup tomek_fortran
+  autocmd!
+  autocmd FileType fortran let b:extended_diff = {"diffopt": "icase,iwhite,icline", "comment_char": "\x21",} | set diffexpr=ExtendedDiff()
+augroup END
+
+"
+
+function! ExtendedDiff()
+  let l:opt = ""
+  if exists("b:extended_diff")
+    if b:extended_diff.diffopt =~? "icase"
+      let l:opt .= "-i "
+    endif
+    if b:extended_diff.diffopt =~? "iblank"
+      let l:opt .= "-b "
+    endif
+    if b:extended_diff.diffopt =~? "iwhite"
+      let l:opt .= "-w "
+    else
+      if b:extended_diff.diffopt =~? "ispacechange"
+        let l:opt .= "-b "
+      else
+        if b:extended_diff.diffopt =~? "itab"
+          let l:opt .= "-E "
+        endif
+        if b:extended_diff.diffopt =~? "itrailspace"
+          let l:opt .= "-Z "
+        endif
+      endif
+    endif
+    if b:extended_diff.diffopt =~? "icline"
+      let l:opt .= '-I ' . "'" . '^[[:blank:]]*' . escape(b:extended_diff.comment_char, '%#!') . "' "
+    endif
+    if b:extended_diff.diffopt =~? "tabstop"
+      let l:opt .= '--tabsize=' . &softtabstop . ' '
+  else
+    if &diffopt =~ "icase"
+      let l:opt .= "-i "
+    endif
+    if &diffopt =~ "iwhite"
+      let l:opt .= "-w "  " -w instead of -b to ignore all white spaces
+    endif
+  endif
+  let l:fname_in = v:fname_in
+  let l:fname_new = v:fname_new
+"   echom '!diff -a --binary ' . l:opt . l:fname_in . ' ' . l:fname_new . ' > ' . v:fname_out
+  silent execute '!diff -a --binary ' . l:opt . l:fname_in . ' ' . l:fname_new . ' > ' . v:fname_out
+endfunction
+
+
+function! ExtendedDiff_StripCLines(fname, cchar)
+"   let l:fname = escape("<(grep -Ev '^\s*" . a:cchar . ".*$' " . a:fname . ")", '!%#')
+  let l:fname = escape('<(grep -Ev "^[[:blank:]]*' . a:cchar . '" ' . a:fname . ')', '%#!|')
+  echom l:fname
+  return l:fname
+endfunction
+
+function! ExtendedDiff_StripComments(fname, cchar)
+  let l:fname = escape("<(sed -E 's/\\!\.*\$//' " . a:fname . ")", '!%#')
+  echom l:fname
+  return l:fname
+endfunction
+
+" function! ExtendedDiff()
+"   let l:opt = ""
+"   if exists("b:extended_diff")
+"     if b:extended_diff.diffopt =~? "icase"
+"       let l:opt .= "-i "
+"     endif
+"     if b:extended_diff.diffopt =~? "iwhite"
+"       let l:opt .= "-w "
+"     endif
+"     if b:extended_diff.diffopt =~? "icline"
+"       let l:fname_in = ExtendedDiff_StripCLines(v:fname_in, b:extended_diff.comment_char)
+"       let l:fname_new = ExtendedDiff_StripCLines(v:fname_new, b:extended_diff.comment_char)
+"     elseif b:extended_diff.diffopt =~? "icomment"
+"       let l:fname_in = ExtendedDiff_StripComments(v:fname_in, b:extended_diff.comment_char)
+"       let l:fname_new = ExtendedDiff_StripComments(v:fname_new, b:extended_diff.comment_char)
+"     endif
+"     silent execute '!diff -a --binary -i -w -I ' . "'" . '^[[:blank:]]*\!' . "' " . v:fname_in . ' ' . v:fname_new . ' > ' . v:fname_out
+" "     silent execute "!diff -a --binary " . l:opt . l:fname_in . " " . l:fname_new . " > " . v:fname_out
+"   else
+"     if &diffopt =~ "icase"
+"       let l:opt .= "-i "
+"     endif
+"     if &diffopt =~ "iwhite"
+"       let l:opt .= "-w "  " -w instead of -b to ignore all white spaces
+"     endif
+"     let l:fname_in = v:fname_in
+"     let l:fname_new = v:fname_new
+"     echom '!diff -a --binary ' . l:opt . l:fname_in . ' ' . l:fname_new . ' > ' . v:fname_out
+"     silent execute '!diff -a --binary ' . l:opt . l:fname_in . ' ' . l:fname_new . ' > ' . v:fname_out
+"   endif
+" endfunction
