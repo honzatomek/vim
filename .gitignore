@@ -2,3 +2,4 @@
 *.ini
 !*_example.ini
 tags*
+.netrwhist
