@@ -138,9 +138,13 @@ set scrolloff=10                        " current line is always 10 lines from e
 set undolevels=500                      " max 500 undos (default is 1000)
 set history=500                         " history of : and search commands (default is 50)
 set linebreak                           " when linewrap is on, do not wrap in the middle of words
-set dir=$HOME/.vim_swap//               " all swap files in one directory
-set backupdir=$HOME/.vim_swap//         " all backupfiles in one directory
-set undofile undodir=$HOME/.vim_undo//  " persistent undo tree, all in one directory
+if isdirectory($HOME . '/.vim_swap/')
+  set dir=$HOME/.vim_swap//               " all swap files in one directory
+  set backupdir=$HOME/.vim_swap//         " all backupfiles in one directory
+endif
+if isdirectory($HOME . '/.vim_undo/')
+  set undofile undodir=$HOME/.vim_undo//  " persistent undo tree, all in one directory
+endif
 set virtualedit=block,onemore           " visualblock selection can go beyond the last line character
 set nojoinspaces                        " when joining lines only one space is used
 set breakindent                         " wrapped lines keep their indent level
