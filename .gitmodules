@@ -75,3 +75,9 @@
 	path = bundle/vimwiki
 	url = https://github.com/vimwiki/vimwiki.git
 	branch = master
+[submodule "bundle/vim-surround"]
+	path = bundle/vim-surround
+	url = https://github.com/tpope/vim-surround
+[submodule "bundle/vim-repeat"]
+	path = bundle/vim-repeat
+	url = https://github.com/tpope/vim-repeat
