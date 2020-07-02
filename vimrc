@@ -1,6 +1,6 @@
 " Author: Jan Tomek
 " Email:  rpi3.tomek@protonmail.com
-" Date:   18.04.2020
+" Date:   02.07.2020
 "
 
 " <--- colorscheme ------------------------------------------------------------> {{{1
@@ -87,7 +87,10 @@ let g:vimwiki_list = [wiki]
 
 set hidden
 set wildmenu                            " enhanced completion
+set wildmode=longest,list,full          " first tab longest completion, second shows list, third cycles the list
 set showcmd                             " show command and visual selection
+
+set incsearch                           " start searching as it is typed
 set hlsearch                            " highlight search
 
 set cpoptions=+$
@@ -95,10 +98,13 @@ set cpoptions=+$
 set ignorecase                          " ignore case in search patterns
 set smartcase                           " smarter ignore case option
 
+set matchpairs+=<:>                     " add <> to % matchpairs
+
 set backspace=indent,eol,start          " backspace works over indent, end-of-line, start-of-line
 set autoindent                          " copy indent from current line when starting new line
 set nostartofline                       " when jumping through file keep cursor in the same column
                                         " if  possible
+
 set ruler                               " show line and column number in status line
 set laststatus=2                        " last window will always have status line
 
@@ -132,9 +138,8 @@ set encoding=utf-8
 set splitright                          " vertical splits open right
 set nosplitbelow                        " horizontal splits open above
 
-set wildmenu                            " enhanced commandline completion - show suggestions upon <tab> over statusline
 " set scrolloff=999                       " current line is always in the middle of screen
-set scrolloff=10                        " current line is always 10 lines from edge of screen
+set scrolloff=9                        " current line is always 10 lines from edge of screen
 set undolevels=500                      " max 500 undos (default is 1000)
 set history=500                         " history of : and search commands (default is 50)
 set linebreak                           " when linewrap is on, do not wrap in the middle of words
@@ -166,17 +171,19 @@ nnoremap <silent>      <leader>ev   :vertical rightbelow split $MYVIMRC<cr>
 nnoremap <silent>      <leader>sv   :source $MYVIMRC<cr>
 " copy to the end of line
 nnoremap               Y            y$
-" use jk and instead of <esc> in insert mode
+" use jk instead of <esc> in insert mode
 inoremap <nowait>      jk           <esc>
+" instead of <Esc> on German keyboard
+noremap <silent>      <c-ü>        <esc>
 " H to move to the beginnig of line
 " nnoremap               H            0
 " L to move to the end of line
 " nnoremap               L            $
 
-" Toggle windows
+" toggle windows
 nnoremap <silent>      <tab>        <c-w><c-w>
 nnoremap <silent>      <s-tab>      <c-w>W
-" Move between windows
+" move between windows
 nnoremap <silent>      <c-left>     <c-w>h
 nnoremap <silent>      <c-right>    <c-w>l
 nnoremap <silent>      <c-up>       <c-w>k
@@ -190,34 +197,38 @@ let @/=""
 " F4 key will forcfully quit the file without save, if in diff mode, then forced quit of all windows
 noremap  <expr>        <f4>         &diff ? ':windo q!<cr>' : ':q!<cr>'
 
-" Toggle scroll lock for all open windows
+" toggle scroll lock for all open windows
 nnoremap <silent>      <leader>b    :windo set scrollbind!<cr>
-" Toggle compare mode for all open windows
+" toggle compare mode for all open windows
 nnoremap <expr>        <leader>d    &diff ? ':windo diffoff<cr>' : ':windo diffthis<cr>'
 
-" Write backup <file>_backup.<ext>
+" write backup <file>_backup.<ext>
 nnoremap <buffer>      <leader>bak  :execute "w ".expand('%:r').'_backup.'.expand("%:e")<cr>
 
-" Move current line down
+" move current line down
 nnoremap <silent>      <c-j>        :m .+1<cr>
 inoremap <silent>      <c-j>        <esc>:m .+1<cr>gi
 vnoremap <silent>      <c-j>        :m '>+1<cr>gv
-" Move current line up
+" move current line up
 nnoremap <silent>      <c-k>        :m .-2<cr>
 inoremap <silent>      <c-k>        <esc>:m .-2<cr>gi
 vnoremap <silent>      <c-k>        :m '<-2<cr>gv
 
-" German keyboard Jump to tag and back
+" german keyboard Jump to tag and back
 nnoremap <silent>      ü            <c-]>
 nnoremap <silent>      Ü            <c-o>
-" Mapping for when invoked from mc Jump to tag and back
+" mapping for when invoked from mc Jump to tag and back
 nnoremap <silent>      <leader>]    <c-]>
 nnoremap <silent>      <leader>o    <c-o>
 
 " <--- search mapping ---------------------------------------------------------> {{{1
-" Create a search pattern for word under cursor
+" search visually selected text
+vnoremap               *            "9y/\M<c-r>9<cr>
+vnoremap               #            "9y?\M<c-r>9<cr>
+
+" create a search pattern for word under cursor
 nnoremap               <leader>w    :%s/\<<c-r><c-w>\>//gc<left><left><left>
-" Create a search - replace calculator
+" create a search - replace calculator
 nnoremap               <leader>sd   :%s/\([+-]\{,1}\d\+\.\d*\(E[+-]\{,1}\d\+\)\{,1}\)/\=printf('%.6E',str2float(submatch(0))+)/c<left><left><left>
 
 " <--- file path under cursor -------------------------------------------------> {{{1
