@@ -119,7 +119,7 @@ set cmdheight=2                         " height of command window
 
 set number                              " show line number next to each line
 
-set pastetoggle=<f11>                   " toggle paste options (paste/no paste)
+set pastetoggle=<f12>                   " toggle paste options (paste/no paste)
 
 set shiftwidth=4                        " set number of chars for indent
 set softtabstop=4                       " number of chars for a tab in insert mode
