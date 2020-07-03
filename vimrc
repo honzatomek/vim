@@ -93,6 +93,7 @@ set showcmd                             " show command and visual selection
 set incsearch                           " start searching as it is typed
 set hlsearch                            " highlight search
 
+set highlight^=i
 set cpoptions=+$
 
 set ignorecase                          " ignore case in search patterns
@@ -130,7 +131,7 @@ set nrformats=
 
 set cursorline                          " shows cursor as a line
 
-set binary                              " reads all files as binary -> dos carriage return as ^M
+set nobinary                            " reads all files as binary -> dos carriage return as ^M
 
 set modeline
 set encoding=utf-8
@@ -235,22 +236,22 @@ nnoremap               <leader>sd   :%s/\([+-]\{,1}\d\+\.\d*\(E[+-]\{,1}\d\+\)\{
 " open file right
 nnoremap               gl           :vertical rightbelow wincmd f<cr>:lcd %:p:h<cr>
 " open file left
-nnoremap               gh           :vertical aboveleft wincmd f<cr>:lcd %:p:h<cr>
+" nnoremap               gh           :vertical aboveleft wincmd f<cr>:lcd %:p:h<cr>
 " open file below
-nnoremap               gj           :rightbelow wincmd f<cr>:lcd %:p:h<cr>
+" nnoremap               gj           :rightbelow wincmd f<cr>:lcd %:p:h<cr>
 " open file above
-nnoremap               gk           :aboveleft wincmd f<cr>:lcd %:p:h<cr>
+" nnoremap               gk           :aboveleft wincmd f<cr>:lcd %:p:h<cr>
 " open explorer right
-nnoremap               ge           :vertical rightbelow new<cr>:Explore<cr>
+" nnoremap               ge           :vertical rightbelow new<cr>:Explore<cr>
 " open new file right
-nnoremap               gn           :vertical rightbelow new<cr>
+" nnoremap               gn           :vertical rightbelow new<cr>
 nnoremap               <c-w>N       :vertical rightbelow new<cr>
 " open new file in new tab
-nnoremap               tn           :tabnew
+" nnoremap               tn           :tabnew
 " open file under cursor in new tab
-nnoremap               tf           :tabnew <cfile><cr>
+" nnoremap               tf           :tabnew <cfile><cr>
 " open directory under cursor
-noremap <buffer>       gd           :execute "vertical rightbelow split ".expand('<cfile>:p:h')<cr>
+" noremap <buffer>       gd           :execute "vertical rightbelow split ".expand('<cfile>:p:h')<cr>
 
 " <--- edit mappings ----------------------------------------------------------> {{{1
 " convert curent word to UPPERCASE
