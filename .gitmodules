@@ -81,6 +81,3 @@
 [submodule "bundle/vim-repeat"]
 	path = bundle/vim-repeat
 	url = https://github.com/tpope/vim-repeat
-[submodule "bundle/webBrowser"]
-	path = bundle/webBrowser
-	url = https://github.com/vim-scripts/webBrowser.git
