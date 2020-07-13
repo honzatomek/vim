@@ -173,7 +173,7 @@ nnoremap <silent>      <leader>sv   :source $MYVIMRC<cr>
 " copy to the end of line
 nnoremap               Y            y$
 " use jk instead of <esc> in insert mode
-inoremap <nowait>      jk           <esc>
+" inoremap <nowait>      jk           <esc>
 " instead of <Esc> on German keyboard
 noremap <silent>      <c-ü>        <esc>
 " H to move to the beginnig of line
