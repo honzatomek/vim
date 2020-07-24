@@ -74,8 +74,9 @@ let wiki.auto_expport = 0
 let wiki.nested_syntaxes = {'python': 'python',
                          \  'bash': 'sh', 'sh': 'sh',
                          \  'vim': 'vim',
+                         \  'vba': 'basic', 'basic': 'basic',
                          \  'git': 'git', 'gitconfig': 'gitconfig',}
-let wiki.links_space_char = '_'
+let wiki.links_space_char = '-'
 let wiki.diary_caption_level = 3
 let wiki.auto_diary_index = 1
 let wiki.auto_toc = 1
