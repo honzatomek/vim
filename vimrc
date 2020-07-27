@@ -61,7 +61,7 @@ let g:vimwiki_key_mappings = {'text_objs': 0,}
 
 let wiki = {}
 let wiki.path = '~/vimwiki'
-let wiki.path_html = '~/vimwiki/vimwiki_html/'
+let wiki.path_html = '~/vimwiki/html/'
 let wiki.template_path = '~/vimwiki/templates/'
 let wiki.template_default = 'default'
 let wiki.template_ext = '.tpl'
@@ -276,6 +276,12 @@ vnoremap <buffer>      <leader>{    <esc>{<i*<esc>`>a}<esc>`<lv`>
 " wrap current expression surrounded by blanks in [] parentheses
 nnoremap <buffer>      <leader>[    viWo<esc>i[<esc>Ea]<esc>
 vnoremap <buffer>      <leader>]    <esc>[<i*<esc>`>a]<esc>`<lv`>
+
+" Programming
+" inoremap <buffer>      {            {<cr>}<c-o>O
+" inoremap <buffer>      (            ()<c-o>h
+" inoremap <buffer>      [            []<c-o>h
+" inoremap <buffer>      <            <><c-o>h
 
 " <--- operator pending mapping -----------------------------------------------> {{{1
 " Inside Next parentheses
