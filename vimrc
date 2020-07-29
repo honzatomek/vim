@@ -74,6 +74,7 @@ let wiki.auto_expport = 0
 let wiki.nested_syntaxes = {'python': 'python',
                          \  'bash': 'sh', 'sh': 'sh',
                          \  'vim': 'vim',
+                         \  'screen': 'screen',
                          \  'vba': 'basic', 'basic': 'basic',
                          \  'git': 'git', 'gitconfig': 'gitconfig',}
 let wiki.links_space_char = '-'
