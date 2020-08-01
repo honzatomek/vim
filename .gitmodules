@@ -45,11 +45,11 @@
 	branch = master
 [submodule "bundle/slimux"]
 	path = bundle/slimux
-	url = git@github.com:honzatomek/slimux.git
+	url = https://github.com/honzatomek/slimux.git
 	branch = master
 [submodule "bundle/vim-snippet"]
 	path = bundle/vim-snippet
-	url = git@github.com:honzatomek/vim-snippet.git
+	url = https://github.com/honzatomek/vim-snippet.git
 	branch = master
 [submodule "bundle/gitgutter"]
 	path = bundle/gitgutter
