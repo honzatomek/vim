@@ -26,10 +26,6 @@
 	path = bundle/vim-better-whitespace
 	url = https://github.com/ntpeters/vim-better-whitespace
 	branch = master
-[submodule "bundle/YouCompleteMe"]
-	path = bundle/YouCompleteMe
-	url = https://github.com/ycm-core/YouCompleteMe
-	branch = master
 [submodule "bundle/vim-flake8"]
 	path = bundle/vim-flake8
 	url = https://github.com/nvie/vim-flake8
@@ -47,10 +43,6 @@
 	url = https://github.com/vim-scripts/bash-support.vim
 	branch = master
 	ignore = dirty
-[submodule "bundle/vim-lsdyna"]
-	path = bundle/vim-lsdyna
-	url = https://github.com/gradzikb/vim-lsdyna
-	branch = master
 [submodule "bundle/undotree"]
 	path = bundle/undotree
 	url = https://github.com/mbbill/undotree
