@@ -26,17 +26,9 @@
 	path = bundle/vim-better-whitespace
 	url = https://github.com/ntpeters/vim-better-whitespace
 	branch = master
-[submodule "bundle/vim-flake8"]
-	path = bundle/vim-flake8
-	url = https://github.com/nvie/vim-flake8
-	branch = master
 [submodule "bundle/vim-nerdtree-tabs"]
 	path = bundle/vim-nerdtree-tabs
 	url = https://github.com/jistr/vim-nerdtree-tabs.git
-	branch = master
-[submodule "bundle/ctrlp"]
-	path = bundle/ctrlp
-	url = https://github.com/kien/ctrlp.vim
 	branch = master
 [submodule "bundle/bash-support"]
 	path = bundle/bash-support
@@ -53,11 +45,11 @@
 	branch = master
 [submodule "bundle/slimux"]
 	path = bundle/slimux
-	url = git@github.com:honzatomek/slimux.git
+	url = https://github.com/honzatomek/slimux.git
 	branch = master
 [submodule "bundle/vim-snippet"]
 	path = bundle/vim-snippet
-	url = git@github.com:honzatomek/vim-snippet.git
+	url = https://github.com/honzatomek/vim-snippet.git
 	branch = master
 [submodule "bundle/gitgutter"]
 	path = bundle/gitgutter
@@ -70,6 +62,8 @@
 [submodule "bundle/vim-surround"]
 	path = bundle/vim-surround
 	url = https://github.com/tpope/vim-surround
+	branch = master
 [submodule "bundle/vim-repeat"]
 	path = bundle/vim-repeat
 	url = https://github.com/tpope/vim-repeat
+	branch = master
