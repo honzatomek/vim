@@ -339,6 +339,13 @@ nnoremap              <leader>wi   :vnew<cr>:VimwikiDiaryIndex<cr>
 nnoremap              <leader>w<leader>w :vnew<cr>:VimwikiMakeDiaryNote<cr>
 
 " <--- augroups ---------------------------------------------------------------> {{{1
+if has("gui_running")
+  augroup GUI
+    au GUIEnter * set guifont=Consolas:h10:cANSI:qDRAFT
+    au GUIEnter * simalt ~x
+  augroup END
+endif
+
 augroup tomek_help
     autocmd!
     autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
