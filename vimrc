@@ -82,6 +82,32 @@ let wiki.diary_caption_level = 3
 let wiki.auto_diary_index = 1
 let wiki.auto_toc = 1
 let g:vimwiki_list = [wiki]
+" <--- taglist ----------------------------------------------------------------> {{{1
+let g:Tlist_Ctags_Cmd = 'C:\HONZA\bin\ctags\ctags.exe'
+let g:Tlist_Show_One_File = 1
+let g:Tlist_Auto_Update = 1
+
+" <--- tagbar -----------------------------------------------------------------> {{{1
+let g:tagbar_ctags_bin = 'C:\HONZA\bin\ctags\ctags.exe'
+let g:tagbar_autoclose = 0
+let g:tagbar_autopreview = 1
+
+let g:tagbar_type_vb = {
+    \ 'ctagstype' : 'vb',
+    \ 'kinds'     : [
+        \ 'F:file:1:0',
+        \ 'T:types:1:0',
+        \ 's:subroutines:0:0',
+        \ 'f:functions:0:0',
+        \ 'E:events:0:0',
+        \ 'v:variables:1:0',
+        \ 'c:constants:1:0',
+        \ 'p:properties:1:0',
+        \ 'e:enums:1:0',
+        \ 'l:labels:1:0'
+    \ ],
+    \ 'deffile' : $HOME . '\vimfiles\ctags\vb.cnf'
+\ }
 
 " <--- add custom settings ----------------------------------------------------> {{{1
 " set nocompatible                        " turn off compatibility with vi, be iMproved
@@ -164,6 +190,8 @@ set ttimeout                            " key codes timeout on
 set ttimeoutlen=100                     " key codes timeout in ms
 
 set shortmess=a
+
+set tags+=./
 
 let mapleader=","
 
@@ -324,11 +352,11 @@ nnoremap              <leader>ut   :UndotreeToggle<cr>
 nnoremap              <f7>         :SyntasticCheck<cr>:SyntasticSetLoclist<cr>
 
 " <--- slimux -----------------------------------------------------------------> {{{1
-nnoremap              <leader>tl   :SlimuxREPLSendLine<cr>
-vnoremap              <leader>tl   :SlimuxREPLSendSelection<cr>
-nnoremap              <leader>tb   :SlimuxREPLSendBuffer<cr>
-nnoremap              <leader>ts   :SlimuxShellPrompt<cr>
-nnoremap              <leader>tk   :SlimuxSendKeysPrompt<cr>
+" nnoremap              <leader>tl   :SlimuxREPLSendLine<cr>
+" vnoremap              <leader>tl   :SlimuxREPLSendSelection<cr>
+" nnoremap              <leader>tb   :SlimuxREPLSendBuffer<cr>
+" nnoremap              <leader>ts   :SlimuxShellPrompt<cr>
+" nnoremap              <leader>tk   :SlimuxSendKeysPrompt<cr>
 
 " <--- vimwiki ----------------------------------------------------------------> {{{1
 " open Vimwiki Main Index page in new vertical split
@@ -338,10 +366,14 @@ nnoremap              <leader>wi   :vnew<cr>:VimwikiDiaryIndex<cr>
 " open Vimwiki Today Note in new vertical split
 nnoremap              <leader>w<leader>w :vnew<cr>:VimwikiMakeDiaryNote<cr>
 
+" <--- tagbar -----------------------------------------------------------------> {{{1
+nnoremap <silent>     <leader>tb   :TagbarToggle<cr>
+" nnoremap <silent>     <leader>tu   :TlistUpdate<cr>
+
 " <--- augroups ---------------------------------------------------------------> {{{1
 if has("gui_running")
   augroup GUI
-    au GUIEnter * set guifont=Consolas:h10:cANSI:qDRAFT
+    au GUIEnter * set guifont=Consolas:h11:cANSI:qDRAFT
     au GUIEnter * simalt ~x
   augroup END
 endif

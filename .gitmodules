@@ -83,3 +83,6 @@
 	path = bundle/vim-repeat
 	url = https://github.com/tpope/vim-repeat
 	branch = master
+[submodule "bundle/tagbar"]
+	path = bundle/tagbar
+	url = https://github.com/preservim/tagbar.git
