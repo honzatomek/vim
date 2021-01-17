@@ -83,6 +83,21 @@ let wiki.auto_diary_index = 1
 let wiki.auto_toc = 1
 let g:vimwiki_list = [wiki]
 
+" <--- vimtex -----------------------------------------------------------------> {{{1
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+
+" <--- tex-conceal ------------------------------------------------------------> {{{1
+set conceallevel=2
+let g:tex_conceal='bcmprsSvV'
+hi Conceal ctermbg=none
+
+" <--- ultisnips --------------------------------------------------------------> {{{1
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+
 " <--- add custom settings ----------------------------------------------------> {{{1
 " set nocompatible                        " turn off compatibility with vi, be iMproved
 " syntax   on                             " turn syntax highlighting on

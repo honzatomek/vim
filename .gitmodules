@@ -83,3 +83,12 @@
 	path = bundle/vim-repeat
 	url = https://github.com/tpope/vim-repeat
 	branch = master
+[submodule "bundle/vimtex"]
+	path = bundle/vimtex
+	url = https://github.com/lervag/vimtex.git
+[submodule "bundle/tex-conceal"]
+	path = bundle/tex-conceal
+	url = https://github.com/KeitaNakamura/tex-conceal.vim.git
+[submodule "bundle/ultisnips"]
+	path = bundle/ultisnips
+	url = https://github.com/SirVer/ultisnips.git
