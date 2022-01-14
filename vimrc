@@ -14,7 +14,7 @@ endif
 " start pathogen from bundle/ directory
 set nocompatible
 runtime bundle/vim-pathogen/autoload/pathogen.vim
-let g:pathogen_disabled = ["vim-lsdyna", "YouCompleteMe", "vim-flake8"]
+let g:pathogen_disabled = ["vim-lsdyna", "YouCompleteMe", "vim-flake8", "ultisnips"]
 execute pathogen#infect()
 syntax on
 filetype off
@@ -225,11 +225,11 @@ nnoremap <buffer>      <leader>bak  :execute "w ".expand('%:r').'_backup.'.expan
 
 " move current line down
 nnoremap <silent>      <c-j>        :m .+1<cr>
-inoremap <silent>      <c-j>        <esc>:m .+1<cr>gi
+" inoremap <silent>      <c-j>        <esc>:m .+1<cr>gi
 vnoremap <silent>      <c-j>        :m '>+1<cr>gv
 " move current line up
 nnoremap <silent>      <c-k>        :m .-2<cr>
-inoremap <silent>      <c-k>        <esc>:m .-2<cr>gi
+" inoremap <silent>      <c-k>        <esc>:m .-2<cr>gi
 vnoremap <silent>      <c-k>        :m '<-2<cr>gv
 
 " german keyboard Jump to tag and back
@@ -375,7 +375,7 @@ augroup END
 
 augroup tomek_python
     autocmd!
-    autocmd FileType python setlocal shiftwidth=4 softtabstop=4 expandtab
+    autocmd FileType python setlocal shiftwidth=2 softtabstop=2 expandtab
     autocmd FileType python setlocal foldmethod=indent nofoldenable
     autocmd FileType python nnoremap <script> <buffer> <leader>c :call <SID>toggle_comment('# ', 0)<cr>
     autocmd FileType python vnoremap <script> <buffer> <leader>c :call <SID>toggle_comment('# ', 1)<cr>
