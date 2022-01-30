@@ -325,6 +325,11 @@ endfor
 nnoremap <expr>        <c-n>        &diff ? ']c' : '<c-n>'
 " go to prev diff
 nnoremap <expr>        <c-p>        &diff ? '[c' : '<c-p>'
+"
+" <--- merge mode -------------------------------------------------------------> {{{1
+nnoremap <expr>        dor          &diff ? ':diffget REMOTE<cr>' : 'dgr'
+nnoremap <expr>        dob          &diff ? ':diffget BASE<cr>' : 'dgr'
+nnoremap <expr>        dol          &diff ? ':diffget LOCAL<cr>'  : 'dgl'
 
 " <--- better whitespace ------------------------------------------------------> {{{1
 noremap                <leader>s    :StripWhitespace<cr>
