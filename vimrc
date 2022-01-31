@@ -151,6 +151,7 @@ set cursorline                          " shows cursor as a line
 set nobinary                            " reads all files as binary -> dos carriage return as ^M
 
 set modeline
+set modelines=5
 set encoding=utf-8
 
 set splitright                          " vertical splits open right
