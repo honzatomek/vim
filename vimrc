@@ -381,7 +381,7 @@ augroup END
 
 augroup tomek_python
     autocmd!
-    autocmd FileType python setlocal shiftwidth=2 softtabstop=2 expandtab
+    autocmd FileType python setlocal shiftwidth=4 softtabstop=4 expandtab
     autocmd FileType python setlocal foldmethod=indent nofoldenable
     autocmd FileType python nnoremap <script> <buffer> <leader>c :call <SID>toggle_comment('# ', 0)<cr>
     autocmd FileType python vnoremap <script> <buffer> <leader>c :call <SID>toggle_comment('# ', 1)<cr>
