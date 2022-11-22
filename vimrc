@@ -408,6 +408,9 @@ augroup tomek_bash
     autocmd FileType sh vnoremap <script> <buffer> <leader>c :call <SID>toggle_comment('# ', 1)<cr>
 augroup END
 
+augroup tomek_latex
+  autocmd!
+  autocmd FileType tex let b:surround_92 = "\\\1function: \1{\r}"
 augroup tomek_general
     autocmd!
     autocmd FileType * if &textwidth != 0 | setlocal colorcolumn=+1 | else | setlocal colorcolumn=81 | endif
