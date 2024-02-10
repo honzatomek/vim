@@ -7,8 +7,7 @@
 " start pathogen from bundle/ directory
 set nocompatible
 runtime bundle/vim-pathogen/autoload/pathogen.vim
-" let g:pathogen_disabled = ["vim-lsdyna", "YouCompleteMe", "vim-flake8", "ultisnips"]
-let g:pathogen_disabled = ["vim-lsdyna", "YouCompleteMe", "ultisnips"]
+let g:pathogen_disabled = ["vim-lsdyna", "ultisnips"]
 execute pathogen#infect()
 syntax on
 filetype off
@@ -37,13 +36,13 @@ let g:undotree_DiffpanelHeight = 15
 
 " <--- taglist ----------------------------------------------------------------> {{{1
 " auto update taglist
-let Tlist_Auto_Update = 1
+" let Tlist_Auto_Update = 1
 " exuberant ctags location
-let Tlist_Ctags_Cmd = '/usr/bin/ctags'
+" let Tlist_Ctags_Cmd = '/usr/bin/ctags'
 " exit vim if only taglist is showing
-let Tlist_Exit_OnlyWindow = 1
+" let Tlist_Exit_OnlyWindow = 1
 " set taglist width
-let Tlist_WinWidth = 40
+" let Tlist_WinWidth = 40
 " set taglist order
 " let Tlist_Sort_Type = "name"
 
