@@ -10,22 +10,22 @@ nnoremap <buffer> Q :quit!<CR>
 
 nnoremap <buffer> r :edit!<CR>:normal G<CR>
 
-nnoremap <buffer> m :normal $<CR>:call <SID>ProSearchTag(['Msg\>'],0)<CR>
-nnoremap <buffer> M :normal 0<CR>:call <SID>ProSearchTag(['Msg\>'],1)<CR>
+nnoremap <buffer> m :normal $<CR>:call <SID>ProSearchTag(['Msg\\>'],0)<CR>
+nnoremap <buffer> M :normal 0<CR>:call <SID>ProSearchTag(['Msg\\>'],1)<CR>
 
-nnoremap <buffer> c :normal $<CR>:call <SID>ProSearchTag(['^\s*\*C\*'],0)<CR>
-nnoremap <buffer> C :normal 0<CR>:call <SID>ProSearchTag(['^\s*\*C\*'],1)<CR>
+nnoremap <buffer> c :normal $<CR>:call <SID>ProSearchTag(['^\\s*\\*C\\*'],0)<CR>
+nnoremap <buffer> C :normal 0<CR>:call <SID>ProSearchTag(['^\\s*\\*C\\*'],1)<CR>
 
-nnoremap <buffer> w :normal $<CR>:call <SID>ProSearchTag(['^\s*\*W\*'],0)<CR>
-nnoremap <buffer> W :normal 0<CR>:call <SID>ProSearchTag(['^\s*\*W\*'],1)<CR>
+nnoremap <buffer> w :normal $<CR>:call <SID>ProSearchTag(['^\\s*\\*W\\*'],0)<CR>
+nnoremap <buffer> W :normal 0<CR>:call <SID>ProSearchTag(['^\\s*\\*W\\*'],1)<CR>
 
-" nnoremap <buffer> e :normal $<CR>:call <SID>ProSearchTag(['^\s*\*E\*', '^\s*\*F\*'],0)<CR>
-" nnoremap <buffer> E :normal 0<CR>:call <SID>ProSearchTag(['^\s*\*E\*', '^\s*\*F\*'],1)<CR>
-nnoremap <buffer> e :normal $<CR>:call <SID>ProSearchTag(['^\s*\*E\*'],0)<CR>
-nnoremap <buffer> E :normal 0<CR>:call <SID>ProSearchTag(['^\s*\*E\*'],1)<CR>
+" nnoremap <buffer> e :normal $<CR>:call <SID>ProSearchTag(['^\\s*\\*E\\*', '^\\s*\\*F\\*'],0)<CR>
+" nnoremap <buffer> E :normal 0<CR>:call <SID>ProSearchTag(['^\\s*\\*E\\*', '^\\s*\\*F\\*'],1)<CR>
+nnoremap <buffer> e :normal $<CR>:call <SID>ProSearchTag(['^\\s*\\*E\\*'],0)<CR>
+nnoremap <buffer> E :normal 0<CR>:call <SID>ProSearchTag(['^\\s*\\*E\\*'],1)<CR>
 
-nnoremap <buffer> f :normal $<CR>:call <SID>ProSearchTag(['^\s*\*F\*'],0)<CR>
-nnoremap <buffer> F :normal 0<CR>:call <SID>ProSearchTag(['^\s*\*F\*'],1)<CR>
+nnoremap <buffer> f :normal $<CR>:call <SID>ProSearchTag(['^\\s*\\*F\\*'],0)<CR>
+nnoremap <buffer> F :normal 0<CR>:call <SID>ProSearchTag(['^\\s*\\*F\\*'],1)<CR>
 
 function! s:ProSearchTag(tags, backward)
     if a:backward

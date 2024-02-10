@@ -24,13 +24,13 @@ function! bash#ExecuteAndShow(mode) range
     endif
 
     let l:curbuffwin = bufwinnr("%")
-    
+
     if a:mode == 'v'
         let l:lines = getline(line("'<"), line("'>"))
     else
         let l:lines = [getline('.')]
     endif
-    
+
     " let l:cmds = []
     " for l:line in l:lines
     "     let l:cmds += ["echo", "echo -e '[ ' " . shellescape(l:line) . " ']'", l:line]
@@ -58,11 +58,11 @@ function! bash#ExecuteAndShow(mode) range
     elseif bufwinnr(s:output_buffer_name) == -1
         echo 'opening buffer'
         silent execute 'vertical botright sb ' . s:output_buffer_name
-        
+
     elseif bufwinnr(s:output_buffer_name) != bufwinnr('%')
         echo 'focusing buffer'
         execute bufwinnr(s:output_buffer_name) . 'wincmd w'
-        
+
     endif
 
     silent execute "setlocal filetype=" . s:output_buffer_type

@@ -273,6 +273,9 @@ if !exists("python_no_exception_highlight")
   syn keyword pythonExceptions	UserWarning Warning
   " builtin warnings in Python 3
   syn keyword pythonExceptions	ResourceWarning
+  " Jan Tomek
+  " add breakpoint and pdb.set_trace for easier noticeability
+  syn keyword pythonExceptions	breakpoint set_trace
 endif
 
 if exists("python_space_error_highlight")
@@ -367,9 +370,9 @@ syn region pythonInterpolation contained
 syn match pythonStringModifier /:\(.[<^=>]\)\?[-+ ]\?#\?0\?[0-9]*[_,]\?\(\.[0-9]*\)\?[bcdeEfFgGnosxX%]\?/ contained containedin=pythonInterpolation
 syn match pythonStringModifier /![sra]/ contained containedin=pythonInterpolation
 
-hi link pythonfString String
-hi link pythonfDocstring String
-hi link pythonStringModifier PreProc
+hi link pythonfString                   String
+hi link pythonfDocstring                String
+hi link pythonStringModifier            PreProc
 " end f-strings
 
 let b:current_syntax = "python"

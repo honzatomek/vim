@@ -3,22 +3,25 @@
 " Date:   02.07.2020
 "
 
-" <--- colorscheme ------------------------------------------------------------> {{{1
-" colorscheme darcula                     " set colorscheme
-colorscheme jellybeans                  " set colorscheme
-if "$TERM" == 'xterm-256color'
-    set t_Co=256
-endif
-
 " <--- pathogen ---------------------------------------------------------------> {{{1
 " start pathogen from bundle/ directory
 set nocompatible
 runtime bundle/vim-pathogen/autoload/pathogen.vim
-let g:pathogen_disabled = ["vim-lsdyna", "YouCompleteMe", "vim-flake8", "ultisnips"]
+" let g:pathogen_disabled = ["vim-lsdyna", "YouCompleteMe", "vim-flake8", "ultisnips"]
+let g:pathogen_disabled = ["vim-lsdyna", "YouCompleteMe", "ultisnips"]
 execute pathogen#infect()
 syntax on
 filetype off
 filetype plugin indent on               " autodetect filetype and use plugin if exists, use indent
+
+" <--- colorscheme ------------------------------------------------------------> {{{1
+" colorscheme darcula                     " set colorscheme
+colorscheme jellybeans                  " set colorscheme
+" colorscheme ghdark
+
+if "$TERM" == 'xterm-256color'
+    set t_Co=256
+endif
 
 " <--- NERDtree ---------------------------------------------------------------> {{{1
 " set NERDTree width
@@ -32,13 +35,25 @@ let g:undotree_SplitWidth = 40
 " set undotree diffpane height
 let g:undotree_DiffpanelHeight = 15
 
+" <--- taglist ----------------------------------------------------------------> {{{1
+" auto update taglist
+let Tlist_Auto_Update = 1
+" exuberant ctags location
+let Tlist_Ctags_Cmd = '/usr/bin/ctags'
+" exit vim if only taglist is showing
+let Tlist_Exit_OnlyWindow = 1
+" set taglist width
+let Tlist_WinWidth = 40
+" set taglist order
+" let Tlist_Sort_Type = "name"
+
 " <--- better whitespace ------------------------------------------------------> {{{1
 " let g:better_whitespace_operator=',s'
 let g:better_whitespace_filetypes_blacklist=['diff', 'gitcommit', 'unite', 'qf',
                                            \ 'help', 'markdown', 'git', 'idlang']
 
 " <--- vim-flake8 -------------------------------------------------------------> {{{1
-" let g:flake8_quickfix_location="rightbelow"
+let g:flake8_quickfix_location="rightbelow"
 
 " <--- vim-syntastic ----------------------------------------------------------> {{{1
 let g:syntastic_check_on_wq = 0
@@ -47,7 +62,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_python_flake8_exec = '/home/pi/.local/bin/flake8'
+let g:syntastic_python_flake8_exec = '~/.local/bin/flake8'
 let g:syntastic_sh_checkers = ['shellcheck']
 let g:syntastic_python_shellcheck_exec = '/usr/bin/shellcheck'
 let g:syntastic_mode_map = {"mode": "passive", "active_filetypes": [], "passive_filetypes": ["python"],}
@@ -337,9 +352,11 @@ endfor
 
 " <--- diff mode --------------------------------------------------------------> {{{1
 " go to next diff
-nnoremap <expr>        <c-n>        &diff ? ']c' : '<c-n>'
+" nnoremap <expr>        <c-n>        &diff ? ']c' : '<c-n>'
+nnoremap <expr>         n           &diff && @/ == "" ? ']c' : 'n'
 " go to prev diff
-nnoremap <expr>        <c-p>        &diff ? '[c' : '<c-p>'
+" nnoremap <expr>        <c-p>        &diff ? '[c' : '<c-p>'
+nnoremap <expr>         N           &diff && @/ == "" ? '[c' : 'N'
 "
 " <--- merge mode -------------------------------------------------------------> {{{1
 nnoremap <expr>        dor          &diff ? ':diffget REMOTE<cr>' : 'dgr'
@@ -399,6 +416,7 @@ augroup tomek_python
     autocmd FileType python setlocal foldmethod=indent nofoldenable
     autocmd FileType python nnoremap <script> <buffer> <leader>c :call <SID>toggle_comment('# ', 0)<cr>
     autocmd FileType python vnoremap <script> <buffer> <leader>c :call <SID>toggle_comment('# ', 1)<cr>
+    " autocmd FileType python vnoremap <expr> <buffer> <f6> FileExecutable(expand('%:p')) & :! % ? :! python3 %
 augroup END
 
 augroup tomek_bash
@@ -532,6 +550,16 @@ function! ExtendedDiff_StripComments(fname, cchar)
   return l:fname
 endfunction
 
+function! FileMask(fname)
+  let l:mask = trim(system("stat -c \%A " . shellescape(a:fname)))
+  return l:mask
+endfunction
+
+function! FileExecutable(fname)
+  let l:mask = FileMask(a:fname)
+  return l:mask[3] == "x"
+endfunction
+
 " function! ExtendedDiff()
 "   let l:opt = ""
 "   if exists("b:extended_diff")
@@ -562,4 +590,4 @@ endfunction
 "     echom '!diff -a --binary ' . l:opt . l:fname_in . ' ' . l:fname_new . ' > ' . v:fname_out
 "     silent execute '!diff -a --binary ' . l:opt . l:fname_in . ' ' . l:fname_new . ' > ' . v:fname_out
 "   endif
-" endfunction
+": endfunction

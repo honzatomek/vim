@@ -10,25 +10,25 @@ nnoremap <buffer> Q :quit!<CR>
 
 nnoremap <buffer> r :edit!<CR>:normal G<CR>
 
-nnoremap <buffer> d :call <SID>ResSearchTag(['^\s*Databus INTRO', '^\s*\>\>\>\>\>\>'],0)<CR>
-nnoremap <buffer> D :call <SID>ResSearchTag(['^\s*Databus INTRO', '^\s*\>\>\>\>\>\>'],1)<CR>
+nnoremap <buffer> d :call <SID>ResSearchTag(['^\\s*Databus INTRO', '^\\s*\\>\\>\\>\\>\\>\\>'],0)<CR>
+nnoremap <buffer> D :call <SID>ResSearchTag(['^\\s*Databus INTRO', '^\\s*\\>\\>\\>\\>\\>\\>'],1)<CR>
 
-nnoremap <buffer> m :call <SID>ResSearchTag(['^\s*\>\s'],0)<CR>
-nnoremap <buffer> M :call <SID>ResSearchTag(['^\s*\>\s'],1)<CR>
+nnoremap <buffer> m :call <SID>ResSearchTag(['^\\s*\\>\\s'],0)<CR>
+nnoremap <buffer> M :call <SID>ResSearchTag(['^\\s*\\>\\s'],1)<CR>
 
-nnoremap <buffer> c :call <SID>ResSearchTag(['^\s*\*C\*'],0)<CR>
-nnoremap <buffer> C :call <SID>ResSearchTag(['^\s*\*C\*'],1)<CR>
+nnoremap <buffer> c :call <SID>ResSearchTag(['^\\s*\\*C\\*'],0)<CR>
+nnoremap <buffer> C :call <SID>ResSearchTag(['^\\s*\\*C\\*'],1)<CR>
 
-nnoremap <buffer> w :call <SID>ResSearchTag(['^\s*\*W\*'],0)<CR>
-nnoremap <buffer> W :call <SID>ResSearchTag(['^\s*\*W\*'],1)<CR>
+nnoremap <buffer> w :call <SID>ResSearchTag(['^\\s*\\*W\\*'],0)<CR>
+nnoremap <buffer> W :call <SID>ResSearchTag(['^\\s*\\*W\\*'],1)<CR>
 
 " nnoremap <buffer> e :call <SID>ResSearchTag(['^\s*\*E\*', '^\s*\*F\*'],0)<CR>
 " nnoremap <buffer> E :call <SID>ResSearchTag(['^\s*\*E\*', '^\s*\*F\*'],1)<CR>
-nnoremap <buffer> e :call <SID>ResSearchTag(['^\s*\*E\*'],0)<CR>
-nnoremap <buffer> E :call <SID>ResSearchTag(['^\s*\*E\*'],1)<CR>
+nnoremap <buffer> e :call <SID>ResSearchTag(['^\\s*\\*E\\*'],0)<CR>
+nnoremap <buffer> E :call <SID>ResSearchTag(['^\\s*\\*E\\*'],1)<CR>
 
-nnoremap <buffer> f :call <SID>ResSearchTag(['^\s*\*F\*'],0)<CR>
-nnoremap <buffer> F :call <SID>ResSearchTag(['^\s*\*F\*'],1)<CR>
+nnoremap <buffer> f :call <SID>ResSearchTag(['^\\s*\\*F\\*'],0)<CR>
+nnoremap <buffer> F :call <SID>ResSearchTag(['^\\s*\\*F\\*'],1)<CR>
 
 function! s:ResSearchTag(tags, backward)
     if a:backward

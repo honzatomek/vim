@@ -5,7 +5,7 @@
 " autocmd BufRead,BufNewFile *.dato,*.dat,*.dat\d*,*.post setlocal filetype=permas_dat nofoldenable
 " autocmd BufRead,BufNewFile *.dato,*.dat,*.dat\d*,*.post let &foldenable=(line2byte('$') < 1*32*1024*1024)
 
-autocmd BufRead,BufNewFile *.dato,*.dat,*.dat\d*,*.post if (line2byte('$') < 1*32*1024*1024) | setlocal filetype=permas_dat | setlocal nofoldenable | else | setlocal filetype=txt | endif
+autocmd BufRead,BufNewFile *.dato,*.dat,*.dat\d*,*.post if (line2byte('$') < 1*32*1024*1024) | setlocal filetype=permas_dat | setlocal nofoldenable tabstop=4 softtabstop=4 shiftwidth=2 | else | setlocal filetype=txt | endif
 
 " autocmd BufRead,BufEnter,BufLeave,InsertLeave,CursorMoved *.dato,*.dat,*.dat\d*,*.post call PermasDatPlaceSigns()
 autocmd BufRead,BufEnter,BufLeave,InsertLeave,CursorMoved *.dato,*.dat,*.dat\d*,*.post if (&filetype == 'permas_dat') | call PermasDatPlaceSigns() | endif
