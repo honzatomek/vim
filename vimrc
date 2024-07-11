@@ -17,6 +17,7 @@ filetype plugin indent on               " autodetect filetype and use plugin if 
 " <--- colorscheme ------------------------------------------------------------> {{{1
 " colorscheme darcula                     " set colorscheme
 colorscheme jellybeans                  " set colorscheme
+" colorscheme morning                  " set colorscheme
 " colorscheme ghdark
 
 if "$TERM" == 'xterm-256color'
